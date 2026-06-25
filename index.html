@@ -2,70 +2,62 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Simple client-side Password Generator with options for length, uppercase, lowercase, numbers and symbols." />
 
     <title>Password Generator</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<div class="container">
+<main class="container">
 
     <h1>Password Generator</h1>
 
-    <div class="password-box">
-        <input type="text" id="password" readonly>
-        <button onclick="copyPassword()">Copy</button>
+    <div class="password-box" aria-live="polite">
+        <input type="text" id="password" readonly aria-label="Generated password" tabindex="0" />
+        <button type="button" id="copy-btn" onclick="copyPassword()" title="Copy password to clipboard" aria-label="Copy password">Copy</button>
     </div>
 
+    <fieldset class="settings" aria-labelledby="settings-legend">
+        <legend id="settings-legend">Password settings</legend>
 
-    <div class="settings">
-
-        <label>
+        <label for="length">
             Password Length:
-            <input type="number" id="length" value="12" min="4" max="50">
         </label>
-
+        <input type="number" id="length" value="12" min="4" max="50" />
 
         <label>
-            <input type="checkbox" id="uppercase" checked>
+            <input type="checkbox" id="uppercase" checked />
             Uppercase Letters
         </label>
 
-
         <label>
-            <input type="checkbox" id="lowercase" checked>
+            <input type="checkbox" id="lowercase" checked />
             Lowercase Letters
         </label>
 
-
         <label>
-            <input type="checkbox" id="numbers" checked>
+            <input type="checkbox" id="numbers" checked />
             Numbers
         </label>
 
-
         <label>
-            <input type="checkbox" id="symbols">
+            <input type="checkbox" id="symbols" />
             Special Characters
         </label>
 
-
-        <button class="generate" onclick="generatePassword()">
+        <button type="button" class="generate" id="generate-btn" onclick="generatePassword()">
             Generate Password
         </button>
+    </fieldset>
 
-    </div>
+    <p id="message" role="status" aria-live="polite"></p>
 
-
-    <p id="message"></p>
-
-
-</div>
-
+</main>
 
 <script src="script.js"></script>
 
